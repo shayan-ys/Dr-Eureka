@@ -56,7 +56,7 @@ class Board:
             index += 1
         print("=== testing state:")
         self.display_tubes(state)
-        for key in reversed(sorted(goal_state_tube_counts.iterkeys())):
+        for key in reversed(sorted(goal_state_tube_counts.keys())):
             goal_tube = goal_state[goal_state_tube_counts[key]]
             print("testing goal_tube:" + str(goal_state_tube_counts[key]))
             print(goal_tube)
@@ -68,6 +68,8 @@ class Board:
                 for i in range(0, min(len(state_tube), len(goal_tube))):
                     if state_tube[i] == goal_tube[i]:
                         state_tube_score += 1
+                    else:
+                        break
                 if state_tube_score > best_match_state_tube_score:
                     best_match_state_tube_index = state_tube_index
                     best_match_state_tube_score = state_tube_score
@@ -82,8 +84,8 @@ class Board:
 board = Board(
     goal_state=[
         ['G'],
-        ['R', 'P'],
-        ['P', 'R', 'G']
+        ['R', 'G'],
+        ['P', 'P', 'R']
     ]
 )
 
