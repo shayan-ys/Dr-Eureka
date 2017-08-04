@@ -159,9 +159,6 @@ class Board:
         for i in range(len(available_moves)):
             next_move = available_moves[0]
 
-            if current_cost < 2:
-                do = "something"
-
             if next_move['h'] == 0:
                 return [next_move['move']], current_cost + 1
 
@@ -199,11 +196,11 @@ board.display_tubes(board.tubes, True)
 print()
 print('=== goal state ===')
 board.display_tubes(board.goal_state)
-# board.heuristic_calc([
-#     ['R', 'P'],
-#     ['P', 'R', 'G'],
-#     ['G']
-# ])
+board.heuristic_calc([
+    ['R', 'P'],
+    ['P', 'R', 'G'],
+    ['G']
+])
 # moved_board, moved_balls = board.move_ball([
 #     ['R', 'P'],
 #     ['P', 'R', 'G'],
@@ -219,9 +216,9 @@ board.display_tubes(board.goal_state)
 # for predicted_state in available_states:
 #     print("=== available move:'" + predicted_state['move']['str'] + "'  cost:" + str(predicted_state['cost']))
 #     board.display_tubes(predicted_state['state'])
-moves, cost = board.find_path()
-print("path found with cost=" + str(cost))
-for move in moves:
-    print(move['str'])
+# moves, cost = board.find_path()
+# print("path found with cost=" + str(cost))
+# for move in moves:
+#     print(move['str'])
 
 print("-- end --")
